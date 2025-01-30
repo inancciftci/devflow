@@ -1,17 +1,17 @@
-import { model, models, Schema } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 export interface IUser {
   name: string;
   username: string;
   email: string;
-  bio: string;
+  bio?: string;
   image: string;
   location?: string;
   portfolio?: string;
   reputation?: number;
 }
 
-const UserSchema = new Schema(
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -33,13 +33,20 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    location: { type: String },
-    portfolio: { type: String },
-    reputation: { type: Number, default: 0 },
+    location: {
+      type: String,
+    },
+    portfolio: {
+      type: String,
+    },
+    reputation: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
 
-const User = models?.user || model<IUser>("User", UserSchema);
+const User = models?.User || model<IUser>("User", userSchema);
 
 export default User;
