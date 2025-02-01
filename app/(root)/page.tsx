@@ -3,8 +3,8 @@ import HomeFilter from "@/components/filters/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/routes";
+// import { api } from "@/lib/api";
 // import handleError from "@/lib/handlers/error";
-// import dbConnect from "@/lib/mongoose";
 import Link from "next/link";
 
 const questions = [
@@ -48,15 +48,15 @@ interface SearchParams {
 
 // const test = async () => {
 //   try {
-//     await dbConnect();
+//     return await api.users.getAll();
 //   } catch (error) {
 //     return handleError(error);
 //   }
 // };
 
 const Home = async ({ searchParams }: SearchParams) => {
-  // const result = await test();
-  // console.log(result);
+  // const users = await test();
+  // console.log(`users`, users);
 
   const { query = "", filter = "" } = await searchParams;
   const filteredQuestions = questions.filter((question) => {
